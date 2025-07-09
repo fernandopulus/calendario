@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Regla general para la colección "evaluaciones"
+    match /evaluaciones/{docId} {
+      
+      // Todos pueden leer
+      allow read: if true;
+
+      // Solo usuarios autenticados pueden escribir
+      allow create, update, delete: if request.auth != null;
+    }
+  }
+}
