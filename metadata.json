@@ -1,0 +1,5 @@
+{
+  "name": "Calendario Académico Liceo Industrial de Recoleta",
+  "description": "Una aplicación web para gestionar y visualizar el calendario de evaluaciones académicas del Liceo Industrial de Recoleta, con áreas separadas para profesores y la comunidad estudiantil.",
+  "requestFramePermissions": []
+}
