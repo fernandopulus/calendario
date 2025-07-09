@@ -40,10 +40,14 @@ export const onSnapshot = (callback: (evaluations: Evaluation[]) => void) => {
   return firebaseOnSnapshot(q, (querySnapshot) => {
     const evaluations = querySnapshot.docs.map(doc => {
       const data = doc.data();
+      const rawDate = data.date;
+      const parsedDate = typeof rawDate?.toDate === 'function'
+        ? rawDate.toDate().toISOString().split('T')[0]
+        : rawDate;
       return {
         id: doc.id,
         ...data,
-        date: data.date.toDate().toISOString().split('T')[0]
+        date: parsedDate
       };
     });
     callback(evaluations);
@@ -66,4 +70,5 @@ export const updateDoc = (docId: string, data: Partial<Evaluation>) => {
   return firebaseUpdateDoc(doc(db, "evaluations", docId), dataWithTimestamp);
 };
 
-export const deleteDoc = (docId: string) => firebaseDeleteDoc(doc(db, "evaluations", docId));
+export const deleteDoc = (docId: string) =>
+  firebaseDeleteDoc(doc(db, "evaluations", docId));
