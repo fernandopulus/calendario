@@ -27,6 +27,7 @@ export const SUBJECTS = [
 
 export const INSTRUMENTS = [
   "Prueba Escrita Parcial",
+  "Guía de Aprendizaje",
   "Prueba Global",
   "Rúbrica",
   "Pauta de Cotejo",
